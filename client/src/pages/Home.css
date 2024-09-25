@@ -1,0 +1,25 @@
+nav{
+    padding-left: 585px;
+    align-content: center;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .paragraph {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
