@@ -57,17 +57,21 @@ npm run dev
 
 <img width="1426" alt="home" src="https://github.com/user-attachments/assets/52952c97-b704-4457-b1ea-c92eac91c826">
 
+
 ℹ️ About Us
 
 <img width="1440" alt="about" src="https://github.com/user-attachments/assets/2bcf23fc-6dbd-41b3-b741-6948b995b4b8">
+
 
 📝 SignUp Page
 
 <img width="1439" alt="signup" src="https://github.com/user-attachments/assets/b1c2a033-7838-4899-9720-9157a4be8637">
 
+
 🔑 Signin Page
 
 <img width="1440" alt="signin" src="https://github.com/user-attachments/assets/666173d0-4bf4-4ad8-911f-0e61de962668">
+
 
 🖼️ Dashboard
 
