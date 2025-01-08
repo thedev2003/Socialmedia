@@ -1,4 +1,4 @@
-# 📸 My Social Media App
+# 📸 GalleryConnect
 
 A simple **social media app** where users can sign up, upload photos with captions, and view their own uploaded content.
 
