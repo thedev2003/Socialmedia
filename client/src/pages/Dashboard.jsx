@@ -31,21 +31,59 @@ export default function Dashboard() {
     setPhotos(staticPhotos);
   }, []);
 
-  const handleUpload = (e) => {
+  useEffect(() => {
+    async function fetchPhotos() {
+      try {
+        const response = await fetch('https://galleryconnect.onrender.com/api/photos');
+        const data = await response.json();
+        setPhotos(data);
+      } catch (error) {
+        console.error('Error fetching photos:', error);
+      }
+    }
+    fetchPhotos();
+  }, []);
+  
+
+  // const handleUpload = (e) => {
+  //   e.preventDefault();
+  //   if (!file || !caption) return;
+
+  //   const newPhoto = {
+  //     _id: Date.now(),
+  //     url: URL.createObjectURL(file),
+  //     caption: caption,
+  //   };
+
+  //   setPhotos((prevPhotos) => [newPhoto, ...prevPhotos]);
+  //   setFile(null);
+  //   setCaption('');
+  //   setButtonColor('red'); 
+  // };
+
+  const handleUpload = async (e) => {
     e.preventDefault();
     if (!file || !caption) return;
-
-    const newPhoto = {
-      _id: Date.now(),
-      url: URL.createObjectURL(file),
-      caption: caption,
-    };
-
-    setPhotos((prevPhotos) => [newPhoto, ...prevPhotos]);
-    setFile(null);
-    setCaption('');
-    setButtonColor('red'); 
+  
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('caption', caption);
+  
+    try {
+      const response = await fetch('https://galleryconnect.onrender.com/api/photos/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      setPhotos((prevPhotos) => [data, ...prevPhotos]);
+      setFile(null);
+      setCaption('');
+      setButtonColor('red');
+    } catch (error) {
+      console.error('Error uploading photo:', error);
+    }
   };
+  
 
   const handleInputChange = () => {
     if (file && caption) {

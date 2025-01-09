@@ -80,7 +80,8 @@ export default function Header() {
             <li style={navItemStyle}>
               {currentUser ? (
                 <img
-                  src={'/uploads/userImage.jpg'}
+                  // src={'/uploads/userImage.jpg'}
+                  src={currentUser ? 'https://galleryconnect.onrender.com/uploads/${currentUser.photo}' : '/uploads/userImage.jpg'}
                   alt='profile'
                   style={profilePictureStyle}
                 />
