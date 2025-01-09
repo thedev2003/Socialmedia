@@ -6,23 +6,22 @@ import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import photoRoutes from './routes/photo.route.js';
+
 dotenv.config();
 
+const app = express();
 
-   mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/Jalaj',  {useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("CONNECTION OPEN!!!")
-    })
-    .catch(err => {
-        console.log("OH NO ERROR!!!!")
-        console.log(err)
-    })
-
+mongoose.set('strictQuery', false);
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Database connection established successfully");
+  })
+  .catch((err) => {
+    console.error("Database connection failed:", err);
+  });
 
 const __dirname = path.resolve();
-
-const app = express();
 
 app.use(express.static(path.join(__dirname, '/client/dist')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -32,12 +31,7 @@ app.get('*', (req, res) => {
 });
 
 app.use(express.json());
-
 app.use(cookieParser());
-
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
-});
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
@@ -51,4 +45,9 @@ app.use((err, req, res, next) => {
     message,
     statusCode,
   });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
