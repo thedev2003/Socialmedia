@@ -21,8 +21,6 @@ Thumbs.db
 .env
 
 # Build and cache directories
-dist/
-build/
 .cache/
 
 # Temporary files
