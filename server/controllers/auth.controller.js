@@ -3,7 +3,7 @@ import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'default_secret_key';
+// const JWT_SECRET = process.env.JWT_SECRET;
 const TOKEN_EXPIRATION = '1h';
 
 export const signup = async (req, res, next) => {
@@ -30,13 +30,15 @@ export const signup = async (req, res, next) => {
 export const signin = async (req, res, next) => {
   const { email, password } = req.body;
   try {
+    console.log('stored jwt', process.env.JWT_SECRET);
+    // console.log('JWT_SECRET:', JWT_SECRET);
     const validUser = await User.findOne({ email });
     if (!validUser) return next(errorHandler(404, 'Invalid credentials'));
 
     const validPassword = await bcryptjs.compare(password, validUser.password);
     if (!validPassword) return next(errorHandler(401, 'Invalid credentials'));
 
-    const token = jwt.sign({ id: validUser._id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
     const { password: hashedPassword, ...rest } = validUser._doc;
     const expiryDate = new Date(Date.now() + 3600000);
 
@@ -56,7 +58,7 @@ export const google = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
       const { password: hashedPassword, ...rest } = user._doc;
       const expiryDate = new Date(Date.now() + 3600000);
 

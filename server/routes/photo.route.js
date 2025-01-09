@@ -1,4 +1,3 @@
-// routes/photo.route.js
 import express from 'express';
 import multer from 'multer';
 import { uploadPhoto, getUserPhotos } from '../controllers/photo.controller.js';
