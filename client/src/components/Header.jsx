@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -7,7 +6,7 @@ export default function Header() {
 
   const headerStyle = {
     padding: '15px 0',
-    borderBottom: '1px solid #ccc', // Subtle border for separation
+    borderBottom: '1px solid #ccc', 
   };
 
   const containerStyle = {
@@ -21,36 +20,36 @@ export default function Header() {
   const titleStyle = {
     fontSize: '28px',
     fontWeight: 'bold',
-    fontFamily: 'Arial, sans-serif', // Standard font
+    fontFamily: 'Arial, sans-serif', 
   };
 
   const navLinksStyle = {
     display: 'flex',
-    gap: '15px', // Space between nav items
-    marginLeft: 'auto', // Push nav links to the right
+    gap: '15px', 
+    marginLeft: 'auto', 
   };
 
   const navItemStyle = {
-    color: 'black', // Black font color
+    color: 'black', 
     padding: '10px 15px',
     borderRadius: '5px',
-    textDecoration: 'none', // Remove underline
+    textDecoration: 'none', 
     transition: 'background-color 0.3s ease',
   };
 
   const navItemHoverStyle = {
-    backgroundColor: '#f0f0f0', // Light gray on hover
+    backgroundColor: '#f0f0f0', 
   };
 
   const profilePictureStyle = {
     height: '30px',
     width: '30px',
-    borderRadius: '50%', // Circular profile picture
+    borderRadius: '50%', 
     objectFit: 'cover',
   };
 
   const userLogoStyle = {
-    fontSize: '16px', // Adjust font size for user logo
+    fontSize: '16px',
   };
 
   return (
@@ -81,7 +80,7 @@ export default function Header() {
             <li style={navItemStyle}>
               {currentUser ? (
                 <img
-                  src={'../public/uploads/userImage.jpg'}
+                  src={'/uploads/userImage.jpg'}
                   alt='profile'
                   style={profilePictureStyle}
                 />
