@@ -51,7 +51,7 @@ Start the client application:
 npm run dev
 ```
 
-🖼️ UI Previewsg
+🖼️ UI Previews
 
 🏠 Home Page
 
